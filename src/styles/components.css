@@ -31,7 +31,7 @@
 }
 
 .brand-logo {
-  height: 36px;
+  height: 40px;
   width: auto;
   display: block;
 }
@@ -94,7 +94,7 @@
   align-items: center;
   text-align: center;
   gap: 18px;
-  padding: clamp(56px, 10vh, 120px) 0 clamp(36px, 5vh, 56px);
+  padding: clamp(96px, 20vh, 240px) 0 clamp(48px, 7vh, 80px);
 }
 
 .hero h1 {

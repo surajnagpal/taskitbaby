@@ -18,7 +18,7 @@ export function ToolPage() {
   const [loadError, setLoadError] = useState<string>();
 
   useEffect(() => {
-    document.title = tool ? `${seo?.title ?? tool.name} | ${SITE_NAME}` : SITE_NAME;
+    document.title = tool ? `${seo?.title ?? tool.name} | ${SITE_NAME}` : `${SITE_NAME} — free PDF tools, nothing uploaded`;
   }, [tool, seo]);
 
   // Reset state and preload the tool's UI when switching tools.

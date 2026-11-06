@@ -11,9 +11,8 @@ function Header() {
   return (
     <header class="site-header">
       <div class="container">
-        <a href="/" class="brand" aria-label="Taskitbaby home">
-          <img class="brand-logo" src="/logo.png" alt="" width="40" height="36" decoding="async" />
-          <span class="brand-name">Taskitbaby</span>
+        <a href="/" class="brand" aria-label="pdfitbaby home">
+          <img class="brand-logo" src="/logo.png" alt="pdfitbaby" width="44" height="40" decoding="async" />
         </a>
         <nav class="header-nav">
           <a href="/#tools" class="nav-link">
@@ -21,9 +20,6 @@ function Header() {
           </a>
           <a href="/#privacy" class="nav-link">
             Privacy
-          </a>
-          <a href="https://github.com/surajnagpal/taskitbaby" class="nav-link" target="_blank" rel="noopener">
-            GitHub
           </a>
         </nav>
       </div>
@@ -35,7 +31,7 @@ function Footer() {
   return (
     <footer class="site-footer">
       <div class="container">
-        <span>© {new Date().getFullYear()} Taskitbaby</span>
+        <span>© {new Date().getFullYear()} pdfitbaby</span>
         <span>Files are processed on your device and never uploaded.</span>
       </div>
     </footer>
