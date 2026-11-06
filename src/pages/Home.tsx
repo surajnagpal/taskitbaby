@@ -22,15 +22,17 @@ export function Home() {
             decoding="async"
           />
         </div>
-        <div class="container">
-          <div class="hero-card">
-            <h1>Every PDF tool you need. Nothing leaves your device.</h1>
-            <p>Merge, split, compress, convert and edit PDFs in your browser. No upload, no account, no limits.</p>
-            <label class="search">
-              <Search size={17} />
-              <input type="search" placeholder="Search tools…" value={q} onInput={(e) => setQ((e.currentTarget as HTMLInputElement).value)} autoComplete="off" />
-            </label>
-          </div>
+        <div class="hero-content container">
+          <h1>
+            Every PDF tool you need.
+            <br />
+            Nothing leaves your device.
+          </h1>
+          <p>Merge, split, compress, convert and edit PDFs in your browser. No upload, no account, no limits.</p>
+          <label class="search">
+            <Search size={17} />
+            <input type="search" placeholder="Search tools…" value={q} onInput={(e) => setQ((e.currentTarget as HTMLInputElement).value)} autoComplete="off" />
+          </label>
         </div>
       </section>
 

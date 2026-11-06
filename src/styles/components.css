@@ -10,10 +10,8 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(8, 8, 8, 0.86);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
+  /* a fade, never a line: content slides under it */
+  background: linear-gradient(to bottom, rgba(8, 8, 8, 0.92) 0%, rgba(8, 8, 8, 0.6) 60%, rgba(8, 8, 8, 0) 100%);
 }
 
 .site-header .container {
@@ -94,87 +92,87 @@
   font-size: 12px;
 }
 
-/* ---------- Home: image band with an overlapping card ---------- */
+/* ---------- Home: the painting dissolves into the page ---------- */
 .hero {
   position: relative;
+  /* sits under the fading header and ends in pure page black */
+  margin-top: -60px;
+  min-height: clamp(540px, 84vh, 920px);
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 48px;
 }
 
 .hero-art {
-  /* tall enough that a 1.67:1 painting shows most of its height on wide screens */
-  height: clamp(360px, 58vh, 760px);
+  position: absolute;
+  inset: 0;
   overflow: hidden;
-  background: var(--bg-elev);
+  background: var(--bg);
 }
 
 .hero-art img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 42%;
+  object-position: 50% 30%;
   display: block;
-  filter: saturate(0.95) contrast(1.03) brightness(0.95);
+  filter: saturate(0.95) contrast(1.02) brightness(0.9);
 }
 
-.hero-card {
+/* One continuous gradient: dark at the very top (under the header), clear
+   through the figures, then down into page black with no visible edge. */
+.hero-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(8, 8, 8, 0.75) 0%, rgba(8, 8, 8, 0.1) 22%, rgba(8, 8, 8, 0.12) 42%, rgba(8, 8, 8, 0.72) 68%, rgba(8, 8, 8, 0.96) 88%, var(--bg) 100%),
+    radial-gradient(130% 80% at 50% 38%, transparent 45%, rgba(8, 8, 8, 0.6) 100%);
+}
+
+.hero-content {
   position: relative;
-  margin: -112px auto 0;
-  width: min(840px, 100%);
-  padding: 40px clamp(24px, 5vw, 56px) 36px;
-  background: var(--text);
-  color: var(--bg);
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  text-align: center;
+  gap: 16px;
 }
 
-.hero-card h1 {
-  font-size: clamp(26px, 3.4vw, 42px);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  max-width: 22ch;
+.hero h1 {
+  font-size: clamp(34px, 4.6vw, 66px);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.55);
 }
 
-.hero-card p {
-  color: #4a4843;
-  font-size: 15.5px;
+.hero p {
+  color: var(--text-2);
+  font-size: 16.5px;
   max-width: 54ch;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6);
 }
 
-.hero-card .search {
-  margin-top: 8px;
+.hero .search {
+  margin-top: 6px;
 }
 
-.hero-card .search input {
-  background: #fff;
-  color: var(--bg);
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
-.hero-card .search input::placeholder {
-  color: #8a8781;
-}
-
-.hero-card .search input:focus {
-  border-color: var(--bg);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
-}
-
-.hero-card .search svg {
-  color: #8a8781;
+.hero .search input {
+  background: rgba(14, 14, 14, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 @media (max-width: 640px) {
-  .hero-art {
-    height: clamp(240px, 36vh, 340px);
+  .hero {
+    min-height: clamp(460px, 76vh, 640px);
+    padding-bottom: 36px;
   }
 
-  .hero-card {
-    margin-top: -56px;
-    padding: 28px 20px 24px;
+  .hero h1 br {
+    display: none;
   }
 }
 
@@ -218,7 +216,7 @@
 }
 
 #tools + .section {
-  margin-top: 56px;
+  margin-top: 24px;
 }
 
 .section.why {
