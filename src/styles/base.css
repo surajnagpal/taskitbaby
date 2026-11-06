@@ -72,9 +72,18 @@ body::before {
     scale: 1.035;
   }
   to {
-    opacity: 0.5;
+    opacity: var(--backdrop-opacity, 0.5);
     scale: 1;
   }
+}
+
+/* Tool pages carry a lot of text: calm the backdrop so it stays readable. */
+body:has(.tool-page) {
+  --backdrop-opacity: 0.2;
+}
+
+body:has(.tool-page)::before {
+  opacity: var(--backdrop-opacity);
 }
 
 /* Shared entrance: things rise into place as the page loads. `translate`
