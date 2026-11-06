@@ -14,14 +14,6 @@ function Header() {
         <a href="/" class="brand" aria-label="pdfitbaby home">
           <img class="brand-logo" src="/logo.png" alt="pdfitbaby" width="44" height="40" decoding="async" />
         </a>
-        <nav class="header-nav">
-          <a href="/#tools" class="nav-link">
-            Tools
-          </a>
-          <a href="/#privacy" class="nav-link">
-            Privacy
-          </a>
-        </nav>
       </div>
     </header>
   );
