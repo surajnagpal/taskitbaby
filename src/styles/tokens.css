@@ -16,12 +16,12 @@
   --text-2: #a9a59d;
   --text-3: #6f6b64;
 
-  /* "Accent" is ivory too: the one bright thing on the page */
-  --accent: #f2efe9;
-  --accent-2: #cbc6bb;
-  --accent-soft: rgba(242, 239, 233, 0.08);
-  --accent-ring: rgba(242, 239, 233, 0.35);
-  --gradient: linear-gradient(135deg, #f7f4ee, #cfcac0);
+  /* Accent: a warm gold lifted from the fresco's ochres */
+  --accent: #d2ab5c;
+  --accent-2: #e8cc8a;
+  --accent-soft: rgba(210, 171, 92, 0.14);
+  --accent-ring: rgba(210, 171, 92, 0.45);
+  --gradient: linear-gradient(135deg, #e8cc8a, #c9994a);
 
   /* Status (only used for feedback) */
   --ok: #8fd4a8;
@@ -37,7 +37,6 @@
 
   /* Type */
   --font: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --serif: 'Cormorant Variable', 'Cormorant Garamond', Garamond, Georgia, 'Times New Roman', serif;
   --mono: ui-monospace, 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas, monospace;
 
   /* Motion */

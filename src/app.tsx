@@ -1,5 +1,5 @@
 import type { ComponentChildren, ComponentType } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
 import { LocationProvider as IsoLocationProvider, Router, Route, useLocation } from 'preact-iso';
 import { ShieldCheck } from 'lucide-preact';
 import { Home } from './pages/Home';
@@ -9,16 +9,8 @@ import { ToolPage } from './pages/ToolPage';
 const LocationProvider = IsoLocationProvider as unknown as ComponentType<{ url?: string; children?: ComponentChildren }>;
 
 function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 24);
-    on();
-    addEventListener('scroll', on, { passive: true });
-    return () => removeEventListener('scroll', on);
-  }, []);
-
   return (
-    <header class={`site-header ${scrolled ? 'scrolled' : ''}`}>
+    <header class="site-header">
       <div class="container">
         <a href="/" class="brand" aria-label="Taskitbaby home">
           <span class="brand-mark">T</span>
@@ -46,6 +38,7 @@ function Footer() {
           Files are processed on your device and never uploaded.
         </span>
         <span>© {new Date().getFullYear()} Taskitbaby</span>
+        <span class="credit">Artwork: Jacques-Louis David, The Death of Socrates (1787), The Metropolitan Museum of Art, public domain.</span>
       </div>
     </footer>
   );
@@ -66,32 +59,11 @@ function NotFound() {
   );
 }
 
-/**
- * On each route change: scroll to the top (unless the URL has a hash) and
- * start revealing `.reveal` sections as they enter the viewport.
- */
-function RouteEffects() {
+/** Scroll to the top on route change unless the URL targets an anchor. */
+function ScrollToTop() {
   const { path, url } = useLocation();
   useEffect(() => {
     if (!url.includes('#')) window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-    const els = Array.from(document.querySelectorAll<HTMLElement>('.reveal:not(.in)'));
-    if (!('IntersectionObserver' in window)) {
-      els.forEach((e) => e.classList.add('in'));
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const en of entries) {
-          if (en.isIntersecting) {
-            en.target.classList.add('in');
-            io.unobserve(en.target);
-          }
-        }
-      },
-      { rootMargin: '0px 0px -6% 0px', threshold: 0.06 },
-    );
-    els.forEach((e) => io.observe(e));
-    return () => io.disconnect();
   }, [path]);
   return null;
 }
@@ -101,7 +73,7 @@ export function App({ url }: { url?: string }) {
     <LocationProvider url={url}>
       <Header />
       <main class="site-main">
-        <RouteEffects />
+        <ScrollToTop />
         <Router>
           <Route path="/" component={Home} />
           <Route path="/:toolId" component={ToolPage} />

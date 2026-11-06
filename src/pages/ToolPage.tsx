@@ -39,7 +39,7 @@ export function ToolPage() {
 
   if (!tool) {
     return (
-      <div class="container">
+      <div class="container tool-page">
         <div class="empty">
           <h2>Tool not found</h2>
           <p style={{ marginTop: 8 }}>
@@ -55,7 +55,7 @@ export function ToolPage() {
   const related = TOOLS.filter((t) => t.id !== tool.id && t.category === tool.category).concat(TOOLS.filter((t) => t.id !== tool.id && t.category !== tool.category)).slice(0, 6);
 
   return (
-    <div class="container fade-in">
+    <div class="container tool-page">
       <div class="tool-head">
         <a href="/" class="back">
           <ArrowLeft size={14} /> All tools
