@@ -48,8 +48,38 @@ body {
   font-feature-settings: 'cv11', 'ss01', 'ss03';
 }
 
+/* A faint black-and-white fresco behind everything. Fixed to the viewport,
+   so it never shows an edge; a light veil keeps text and cards crisp. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('/art/athens-bw-2000.jpg');
+  background-size: cover;
+  background-position: 50% 30%;
+  opacity: 0.13;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(var(--bg-rgb), 0.25) 0%, rgba(var(--bg-rgb), 0) 35%, rgba(var(--bg-rgb), 0.55) 100%);
+}
+
+@media (max-width: 800px) {
+  body::before {
+    background-image: url('/art/athens-bw-1200.jpg');
+  }
+}
+
 #app {
   position: relative;
+  z-index: 1;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
