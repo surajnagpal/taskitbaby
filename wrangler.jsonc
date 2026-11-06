@@ -3,11 +3,18 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "pdfitbaby",
   "compatibility_date": "2026-11-06",
+  // keep the *.workers.dev preview URL alongside the custom domains
+  "workers_dev": true,
   "assets": {
     "directory": "./dist",
     // /merge-pdf serves merge-pdf.html; /merge-pdf/ redirects to /merge-pdf
     "html_handling": "auto-trailing-slash",
     // unknown URLs get the pre-rendered 404.html with a real 404 status
     "not_found_handling": "404-page"
-  }
+  },
+  // Custom domains on the taskitbaby.com zone (active once GoDaddy's nameservers point at Cloudflare).
+  "routes": [
+    { "pattern": "taskitbaby.com", "custom_domain": true },
+    { "pattern": "www.taskitbaby.com", "custom_domain": true }
+  ]
 }

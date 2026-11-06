@@ -8,4 +8,4 @@ export const SITE_TAGLINE = 'Free PDF tools that never upload your files';
 export const SITE_DESCRIPTION =
   'Merge, split, compress, convert, protect and edit PDFs for free. Everything runs in your browser, so your files are never uploaded and never leave your device.';
 
-export const HOME_TITLE = 'pdfitbaby — free PDF tools, nothing uploaded';
+export const HOME_TITLE = 'pdfitbaby';

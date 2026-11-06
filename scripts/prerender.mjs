@@ -109,7 +109,8 @@ for (const t of tools) {
   const { html, links } = await renderRoute(`/${t.id}`);
   links.forEach((l) => allLinks.add(l));
   const url = `${site.url}/${t.id}`;
-  const title = `${s?.title ?? t.name} | ${site.name}`;
+  // Short tab title; the descriptive wording for search engines lives in the description and page body.
+  const title = `${t.name} · ${site.name}`;
   const description = s?.description ?? t.description;
   const graph = [
     webApp(`${t.name} — ${site.name}`, url, description),
