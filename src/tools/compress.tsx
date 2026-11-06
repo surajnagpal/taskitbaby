@@ -38,7 +38,7 @@ async function compressRaster(file: File, dpi: number, quality: number, onProgre
     canvas.height = Math.ceil(vp.height);
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    await page.render({ canvasContext: ctx, viewport: vp, canvas }).promise;
+    await page.render({ canvasContext: ctx, viewport: vp, canvas, intent: 'print' }).promise;
     const blob: Blob = await new Promise((res, rej) => canvas.toBlob((b) => (b ? res(b) : rej(new Error('encode failed'))), 'image/jpeg', quality));
     const img = await out.embedJpg(await blob.arrayBuffer());
     const p = out.addPage([base.width, base.height]);

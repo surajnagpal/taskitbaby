@@ -16,9 +16,7 @@ export function Home() {
     <div class="container">
       <section class="hero">
         <h1 aria-label="Every PDF tool. Zero uploads.">
-          <Words text="Every PDF tool." from={0} />
-          <br />
-          <Words text="Zero uploads." from={3} />
+          <Words text="Every PDF tool. Zero uploads." from={0} />
         </h1>
         <p>Merge, split, compress, convert and edit PDFs in your browser. Files never leave your device.</p>
         <label class="search">

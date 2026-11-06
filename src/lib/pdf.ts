@@ -88,7 +88,9 @@ export async function renderPages(
     canvas.height = Math.ceil(vp.height);
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    await page.render({ canvasContext: ctx, viewport: vp, canvas }).promise;
+    // 'print' intent renders without requestAnimationFrame, so work carries on
+    // in background tabs instead of stalling until the tab is visible again.
+    await page.render({ canvasContext: ctx, viewport: vp, canvas, intent: 'print' }).promise;
     const url = canvas.toDataURL(type, quality);
     const r = { index: i, width: canvas.width, height: canvas.height, url };
     out.push(r);
@@ -108,7 +110,7 @@ export async function renderPageToCanvas(doc: PDFDocumentProxy, index: number, s
   const ctx = canvas.getContext('2d', { alpha: false })!;
   ctx.fillStyle = '#fff';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  await page.render({ canvasContext: ctx, viewport: vp, canvas }).promise;
+  await page.render({ canvasContext: ctx, viewport: vp, canvas, intent: 'print' }).promise;
   page.cleanup();
   return { width: vp.width, height: vp.height };
 }

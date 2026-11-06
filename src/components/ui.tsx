@@ -2,6 +2,7 @@ import type { ComponentChildren } from 'preact';
 import { AlertCircle, Check, Download, RotateCcw } from 'lucide-preact';
 import { downloadBlob, formatBytes, toBlob, zipFiles, type OutFile } from '../lib/files';
 import { useState } from 'preact/hooks';
+import { Preview } from './Preview';
 
 export function Field({ label, hint, children }: { label?: string; hint?: string; children: ComponentChildren }) {
   return (
@@ -90,6 +91,7 @@ export function Result({ title, files, zipName, onReset, note }: { title: string
         {files.length === 1 ? files[0].name : `${files.length} files`} · {formatBytes(total)}
       </p>
       {note && <div style={{ maxWidth: 480 }}>{note}</div>}
+      <Preview files={files} />
       <div class="row wrap" style={{ justifyContent: 'center' }}>
         <button class="btn btn-accent btn-lg" onClick={downloadAll} disabled={zipping}>
           <Download size={18} />
