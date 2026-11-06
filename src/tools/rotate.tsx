@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { RotateCw } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Progress, Result, Seg } from '../components/ui';
 import { PageGrid, type PageItem } from '../components/PageGrid';
 import { degrees, loadPdfLib, savePdf, thumbnails } from '../lib/pdf';
@@ -92,13 +91,4 @@ function RotateTool({ files, reset }: ToolProps) {
   );
 }
 
-export const rotate: Tool = {
-  id: 'rotate-pdf',
-  name: 'Rotate PDF',
-  description: 'Turn all pages, or just the ones you pick, by 90, 180 or 270 degrees.',
-  category: 'edit',
-  icon: RotateCw,
-  accept: 'application/pdf,.pdf',
-  multiple: false,
-  component: RotateTool,
-};
+export default RotateTool;

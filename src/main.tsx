@@ -1,8 +1,9 @@
-import { render } from 'preact';
+import { hydrate } from 'preact-iso';
 import '@fontsource-variable/inter';
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/components.css';
 import { App } from './app';
 
-render(<App />, document.getElementById('app')!);
+// Pre-rendered pages are hydrated; anything else is rendered from scratch.
+hydrate(<App />, document.getElementById('app')!);

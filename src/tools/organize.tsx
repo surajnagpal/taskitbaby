@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { LayoutGrid } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Progress, Result } from '../components/ui';
 import { PageGrid, type PageItem } from '../components/PageGrid';
 import { PDFDocument, degrees, loadPdfLib, savePdf, thumbnails } from '../lib/pdf';
@@ -95,13 +94,4 @@ function OrganizeTool({ files, reset }: ToolProps) {
   );
 }
 
-export const organize: Tool = {
-  id: 'organize-pdf',
-  name: 'Organize PDF',
-  description: 'Reorder, rotate and remove pages visually, then save.',
-  category: 'organize',
-  icon: LayoutGrid,
-  accept: 'application/pdf,.pdf',
-  multiple: false,
-  component: OrganizeTool,
-};
+export default OrganizeTool;

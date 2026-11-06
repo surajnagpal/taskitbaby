@@ -20,6 +20,8 @@ export interface ToolProps {
   reset: () => void;
 }
 
+export type ToolComponent = ComponentType<ToolProps>;
+
 export interface Tool {
   id: string;
   name: string;
@@ -34,5 +36,9 @@ export interface Tool {
   hint?: string;
   /** Marks a tool as not yet available. */
   soon?: boolean;
-  component: ComponentType<ToolProps>;
+  /**
+   * Loads the tool's UI on demand. Keeps the PDF libraries out of the initial
+   * page load and out of the pre-render step.
+   */
+  load: () => Promise<ToolComponent>;
 }

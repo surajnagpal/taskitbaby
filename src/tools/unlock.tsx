@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import { Eye, EyeOff, LockOpen } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Note, Progress, Result } from '../components/ui';
 import { FileList } from '../components/FileList';
 import { PDFDocument, PdfPasswordError, loadPdfLib, savePdf } from '../lib/pdf';
@@ -69,13 +69,4 @@ function UnlockTool({ files, setFiles, reset }: ToolProps) {
   );
 }
 
-export const unlock: Tool = {
-  id: 'unlock-pdf',
-  name: 'Unlock PDF',
-  description: 'Remove a password or restrictions from a PDF you have the right to open.',
-  category: 'security',
-  icon: LockOpen,
-  accept: 'application/pdf,.pdf',
-  multiple: true,
-  component: UnlockTool,
-};
+export default UnlockTool;

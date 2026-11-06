@@ -1,6 +1,5 @@
 import { useState } from 'preact/hooks';
-import { Hash } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Progress, Result, Seg } from '../components/ui';
 import { FileList } from '../components/FileList';
 import { StandardFonts, loadPdfLib, rgb, savePdf } from '../lib/pdf';
@@ -150,13 +149,4 @@ function PageNumbersTool({ files, setFiles, reset }: ToolProps) {
   );
 }
 
-export const pageNumbers: Tool = {
-  id: 'add-page-numbers',
-  name: 'Add page numbers',
-  description: 'Stamp page numbers wherever you like, in the format you like.',
-  category: 'edit',
-  icon: Hash,
-  accept: 'application/pdf,.pdf',
-  multiple: true,
-  component: PageNumbersTool,
-};
+export default PageNumbersTool;

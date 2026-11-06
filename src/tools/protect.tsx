@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import { Eye, EyeOff, Lock } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Note, Progress, Result, Toggle } from '../components/ui';
 import { FileList } from '../components/FileList';
 import { loadPdfLib, savePdf } from '../lib/pdf';
@@ -90,13 +90,4 @@ function ProtectTool({ files, setFiles, reset }: ToolProps) {
   );
 }
 
-export const protect: Tool = {
-  id: 'protect-pdf',
-  name: 'Protect PDF',
-  description: 'Add a password and set what readers may print, copy or edit.',
-  category: 'security',
-  icon: Lock,
-  accept: 'application/pdf,.pdf',
-  multiple: true,
-  component: ProtectTool,
-};
+export default ProtectTool;

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { FileMinus } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Progress, Result } from '../components/ui';
 import { PageGrid, type PageItem } from '../components/PageGrid';
 import { PDFDocument, loadPdfLib, savePdf, thumbnails } from '../lib/pdf';
@@ -88,13 +87,4 @@ function RemovePagesTool({ files, reset }: ToolProps) {
   );
 }
 
-export const removePages: Tool = {
-  id: 'remove-pages',
-  name: 'Remove pages',
-  description: 'Delete the pages you don’t need and save a new PDF.',
-  category: 'organize',
-  icon: FileMinus,
-  accept: 'application/pdf,.pdf',
-  multiple: false,
-  component: RemovePagesTool,
-};
+export default RemovePagesTool;

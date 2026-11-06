@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { FileOutput } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Progress, Result, Toggle } from '../components/ui';
 import { PageGrid, type PageItem } from '../components/PageGrid';
 import { PDFDocument, loadPdfLib, savePdf, thumbnails } from '../lib/pdf';
@@ -106,13 +105,4 @@ function ExtractPagesTool({ files, reset }: ToolProps) {
   );
 }
 
-export const extractPages: Tool = {
-  id: 'extract-pages',
-  name: 'Extract pages',
-  description: 'Pull selected pages out into a new PDF, together or one file per page.',
-  category: 'organize',
-  icon: FileOutput,
-  accept: 'application/pdf,.pdf',
-  multiple: false,
-  component: ExtractPagesTool,
-};
+export default ExtractPagesTool;

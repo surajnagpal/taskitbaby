@@ -2,22 +2,40 @@ import { useEffect, useState } from 'preact/hooks';
 import { ArrowLeft, ShieldCheck } from 'lucide-preact';
 import { useRoute } from 'preact-iso';
 import { TOOLS } from '../tools';
+import type { ToolComponent } from '../tools/types';
+import { TOOL_SEO } from '../seo/content';
+import { SITE_NAME } from '../seo/site';
 import { DropZone } from '../components/DropZone';
 
 export function ToolPage() {
   const { params } = useRoute();
-  const tool = TOOLS.find((t) => t.id === params.toolId);
+  // Pre-rendered pages are served as /<id>.html by some hosts; accept both.
+  const toolId = (params.toolId ?? '').replace(/\.html$/, '');
+  const tool = TOOLS.find((t) => t.id === toolId);
+  const seo = tool ? TOOL_SEO[tool.id] : undefined;
   const [files, setFiles] = useState<File[]>([]);
+  const [Body, setBody] = useState<ToolComponent | null>(null);
+  const [loadError, setLoadError] = useState<string>();
 
   useEffect(() => {
-    document.title = tool ? `${tool.name} — Taskitbaby` : 'Taskitbaby';
-    return () => {
-      document.title = 'Taskitbaby — Free PDF tools, private by design';
-    };
-  }, [tool]);
+    document.title = tool ? `${seo?.title ?? tool.name} | ${SITE_NAME}` : SITE_NAME;
+  }, [tool, seo]);
 
-  // reset when switching tools
-  useEffect(() => setFiles([]), [params.toolId]);
+  // Reset state and preload the tool's UI when switching tools.
+  useEffect(() => {
+    setFiles([]);
+    setBody(null);
+    setLoadError(undefined);
+    if (!tool) return;
+    let alive = true;
+    tool
+      .load()
+      .then((c) => alive && setBody(() => c))
+      .catch((e) => alive && setLoadError((e as Error).message));
+    return () => {
+      alive = false;
+    };
+  }, [tool?.id]);
 
   if (!tool) {
     return (
@@ -34,7 +52,7 @@ export function ToolPage() {
     );
   }
 
-  const Body = tool.component;
+  const related = TOOLS.filter((t) => t.id !== tool.id && t.category === tool.category).concat(TOOLS.filter((t) => t.id !== tool.id && t.category !== tool.category)).slice(0, 6);
 
   return (
     <div class="container fade-in">
@@ -53,9 +71,55 @@ export function ToolPage() {
             <ShieldCheck size={15} />
             Processed on your device. Nothing is uploaded.
           </div>
+
+          {seo && (
+            <section class="seo">
+              <div>
+                <h2>{seo.howToTitle}</h2>
+                <ol class="steps">
+                  {seo.howTo.map((s, i) => (
+                    <li key={i}>{s}</li>
+                  ))}
+                </ol>
+              </div>
+              <div>
+                <h2>Frequently asked questions</h2>
+                <div class="faq-list">
+                  {seo.faq.map((f) => (
+                    <details class="faq" key={f.q}>
+                      <summary>{f.q}</summary>
+                      <p>{f.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          <section class="related">
+            <div class="section-title">More tools</div>
+            <div class="related-links">
+              {related.map((t) => {
+                const Icon = t.icon;
+                return (
+                  <a key={t.id} href={`/${t.id}`}>
+                    <Icon size={15} /> {t.name}
+                  </a>
+                );
+              })}
+            </div>
+          </section>
         </>
-      ) : (
+      ) : loadError ? (
+        <div class="alert error">Couldn’t load this tool: {loadError}. Check your connection and reload.</div>
+      ) : Body ? (
         <Body key={files.map((f) => f.name + f.size).join('|')} files={files} setFiles={setFiles} reset={() => setFiles([])} />
+      ) : (
+        <div class="panel">
+          <div class="progress indeterminate">
+            <div />
+          </div>
+        </div>
       )}
     </div>
   );

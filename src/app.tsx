@@ -1,5 +1,9 @@
-import { LocationProvider, Router, Route, useLocation } from 'preact-iso';
+import type { ComponentChildren, ComponentType } from 'preact';
+import { LocationProvider as IsoLocationProvider, Router, Route, useLocation } from 'preact-iso';
 import { FileText, ShieldCheck } from 'lucide-preact';
+
+// preact-iso accepts a `url` prop for pre-rendering but doesn't type it.
+const LocationProvider = IsoLocationProvider as unknown as ComponentType<{ url?: string; children?: ComponentChildren }>;
 import { Home } from './pages/Home';
 import { ToolPage } from './pages/ToolPage';
 
@@ -65,9 +69,9 @@ function ScrollToTop() {
   return null;
 }
 
-export function App() {
+export function App({ url }: { url?: string }) {
   return (
-    <LocationProvider>
+    <LocationProvider url={url}>
       <Header />
       <main class="site-main">
         <ScrollToTop />

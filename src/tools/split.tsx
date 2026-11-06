@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { Scissors } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Progress, Result, Seg } from '../components/ui';
 import { PageGrid, type PageItem } from '../components/PageGrid';
 import { PDFDocument, loadPdfLib, savePdf, thumbnails } from '../lib/pdf';
@@ -125,13 +124,4 @@ function SplitTool({ files, reset }: ToolProps) {
   );
 }
 
-export const split: Tool = {
-  id: 'split-pdf',
-  name: 'Split PDF',
-  description: 'Break a PDF into separate files by page ranges, every page or every N pages.',
-  category: 'organize',
-  icon: Scissors,
-  accept: 'application/pdf,.pdf',
-  multiple: false,
-  component: SplitTool,
-};
+export default SplitTool;

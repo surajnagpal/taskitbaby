@@ -1,6 +1,5 @@
 import { useState } from 'preact/hooks';
-import { Droplets } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Progress, Result, Seg } from '../components/ui';
 import { FileList } from '../components/FileList';
 import { StandardFonts, degrees, loadPdfLib, rgb, savePdf } from '../lib/pdf';
@@ -105,13 +104,4 @@ function WatermarkTool({ files, setFiles, reset }: ToolProps) {
   );
 }
 
-export const watermark: Tool = {
-  id: 'add-watermark',
-  name: 'Add watermark',
-  description: 'Stamp text across every page, centred or tiled, at any angle and opacity.',
-  category: 'edit',
-  icon: Droplets,
-  accept: 'application/pdf,.pdf',
-  multiple: true,
-  component: WatermarkTool,
-};
+export default WatermarkTool;

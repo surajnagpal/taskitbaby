@@ -12,9 +12,6 @@ export function Home() {
   return (
     <div class="container">
       <section class="hero">
-        <span class="pill">
-          <span class="dot" /> Free · No sign-up · Nothing uploaded
-        </span>
         <h1>
           Every PDF tool you need, <span class="grad">right in your browser.</span>
         </h1>

@@ -1,6 +1,5 @@
 import { useState } from 'preact/hooks';
-import { Shrink } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Note, Progress, Result, Seg } from '../components/ui';
 import { FileList } from '../components/FileList';
 import { PDFDocument, closePdfJs, loadPdfLib, openPdfJs, savePdf } from '../lib/pdf';
@@ -127,13 +126,4 @@ function CompressTool({ files, setFiles, reset }: ToolProps) {
   );
 }
 
-export const compress: Tool = {
-  id: 'compress-pdf',
-  name: 'Compress PDF',
-  description: 'Shrink PDFs for email and sharing, with a choice of quality.',
-  category: 'optimize',
-  icon: Shrink,
-  accept: 'application/pdf,.pdf',
-  multiple: true,
-  component: CompressTool,
-};
+export default CompressTool;

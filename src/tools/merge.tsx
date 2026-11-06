@@ -1,6 +1,5 @@
 import { useState } from 'preact/hooks';
-import { Merge } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { FileList } from '../components/FileList';
 import { DropZone } from '../components/DropZone';
 import { ErrorBox, Progress, Result } from '../components/ui';
@@ -61,14 +60,4 @@ function MergeTool({ files, setFiles, reset }: ToolProps) {
   );
 }
 
-export const merge: Tool = {
-  id: 'merge-pdf',
-  name: 'Merge PDF',
-  description: 'Combine several PDFs into one, in the order you choose.',
-  category: 'organize',
-  icon: Merge,
-  accept: 'application/pdf,.pdf',
-  multiple: true,
-  hint: 'Drop two or more PDFs, or click to choose',
-  component: MergeTool,
-};
+export default MergeTool;

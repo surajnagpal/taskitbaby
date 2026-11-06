@@ -1,6 +1,5 @@
 import { useState } from 'preact/hooks';
-import { Images } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Progress, Result, Seg } from '../components/ui';
 import { FileList } from '../components/FileList';
 import { DropZone } from '../components/DropZone';
@@ -147,14 +146,4 @@ function ImageToPdfTool({ files, setFiles, reset }: ToolProps) {
   );
 }
 
-export const imageToPdf: Tool = {
-  id: 'image-to-pdf',
-  name: 'JPG to PDF',
-  description: 'Turn JPG, PNG, WebP or other images into a PDF, one image per page.',
-  category: 'convert-to',
-  icon: Images,
-  accept: 'image/*',
-  multiple: true,
-  hint: 'Drop images, or click to choose',
-  component: ImageToPdfTool,
-};
+export default ImageToPdfTool;

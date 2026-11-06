@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { Image } from 'lucide-preact';
-import type { Tool, ToolProps } from './types';
+import type { ToolProps } from './types';
 import { ErrorBox, Field, Progress, Result, Seg } from '../components/ui';
 import { PageGrid, type PageItem } from '../components/PageGrid';
 import { closePdfJs, openPdfJs, renderPages, thumbnails } from '../lib/pdf';
@@ -115,13 +114,4 @@ function PdfToImageTool({ files, reset }: ToolProps) {
   );
 }
 
-export const pdfToImage: Tool = {
-  id: 'pdf-to-jpg',
-  name: 'PDF to JPG',
-  description: 'Save every page, or just some, as JPG or PNG images.',
-  category: 'convert-from',
-  icon: Image,
-  accept: 'application/pdf,.pdf',
-  multiple: false,
-  component: PdfToImageTool,
-};
+export default PdfToImageTool;
