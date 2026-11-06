@@ -1,0 +1,13 @@
+{
+  // Cloudflare Workers static-assets site. Build with `npm run build`, then `npm run deploy`.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pdfitbaby",
+  "compatibility_date": "2026-11-06",
+  "assets": {
+    "directory": "./dist",
+    // /merge-pdf serves merge-pdf.html; /merge-pdf/ redirects to /merge-pdf
+    "html_handling": "auto-trailing-slash",
+    // unknown URLs get the pre-rendered 404.html with a real 404 status
+    "not_found_handling": "404-page"
+  }
+}
