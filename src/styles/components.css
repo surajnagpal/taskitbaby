@@ -10,10 +10,7 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(var(--bg-rgb), 0.82);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border-bottom: 1px solid var(--line);
+  background: transparent;
 }
 
 .site-header .container {
