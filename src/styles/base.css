@@ -10,10 +10,10 @@ html {
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #2a2a2a var(--bg);
+  scrollbar-color: #cfcac0 var(--bg);
 }
 
-/* Dark, slim scrollbars (Chromium / Safari) */
+/* Slim scrollbars that match the page (Chromium / Safari) */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -24,13 +24,13 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: #cfcac0;
   border-radius: 999px;
   border: 2px solid var(--bg);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3a3a;
+  background: #b9b3a7;
 }
 
 ::-webkit-scrollbar-corner {
@@ -96,7 +96,7 @@ p {
 }
 
 ::selection {
-  background: rgba(242, 239, 233, 0.18);
+  background: rgba(184, 136, 47, 0.25);
 }
 
 @media (prefers-reduced-motion: reduce) {

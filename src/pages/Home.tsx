@@ -15,7 +15,7 @@ export function Home() {
         <div class="hero-art" aria-hidden="true">
           <img
             src="/art/hero-1400.jpg"
-            srcset="/art/hero-800.jpg 800w, /art/hero-1400.jpg 1400w, /art/hero-2400.jpg 2400w, /art/hero-3600.jpg 3600w"
+            srcset="/art/hero-800.jpg 800w, /art/hero-1400.jpg 1400w, /art/hero-2000.jpg 2000w"
             sizes="100vw"
             alt=""
             fetchpriority="high"

@@ -38,7 +38,7 @@ function Footer() {
           Files are processed on your device and never uploaded.
         </span>
         <span>© {new Date().getFullYear()} Taskitbaby</span>
-        <span class="credit">Artwork: Jacques-Louis David, The Death of Socrates (1787), The Metropolitan Museum of Art, public domain.</span>
+        <span class="credit">Artwork: Raphael, The School of Athens (1509–1511), public domain.</span>
       </div>
     </footer>
   );

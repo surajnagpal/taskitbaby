@@ -1,33 +1,34 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  /* Surfaces — true monochrome, warmed very slightly so black feels rich, not flat */
-  --bg: #080808;
-  --bg-elev: #0e0e0e;
-  --bg-elev-2: #141414;
-  --bg-hover: #1a1a1a;
+  /* Surfaces — warm off-white, like the fresco's stone */
+  --bg: #f7f5f0;
+  --bg-rgb: 247, 245, 240;
+  --bg-elev: #ffffff;
+  --bg-elev-2: #fbfaf7;
+  --bg-hover: #f0ede6;
 
   /* Lines */
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.17);
+  --line: rgba(20, 18, 14, 0.09);
+  --line-strong: rgba(20, 18, 14, 0.18);
 
-  /* Text — ivory rather than pure white */
-  --text: #f2efe9;
-  --text-2: #a9a59d;
-  --text-3: #6f6b64;
+  /* Text */
+  --text: #161513;
+  --text-2: #5e5a52;
+  --text-3: #8c877d;
 
-  /* Accent: a warm gold lifted from the fresco's ochres */
-  --accent: #d2ab5c;
-  --accent-2: #e8cc8a;
-  --accent-soft: rgba(210, 171, 92, 0.14);
-  --accent-ring: rgba(210, 171, 92, 0.45);
-  --gradient: linear-gradient(135deg, #e8cc8a, #c9994a);
+  /* Accent: warm gold lifted from the fresco's ochres (darkened for contrast on light) */
+  --accent: #b8882f;
+  --accent-2: #d8b25f;
+  --accent-soft: rgba(184, 136, 47, 0.12);
+  --accent-ring: rgba(184, 136, 47, 0.4);
+  --gradient: linear-gradient(135deg, #d8b25f, #b8882f);
 
   /* Status (only used for feedback) */
-  --ok: #8fd4a8;
-  --warn: #e3c57a;
-  --danger: #e38b8b;
-  --danger-soft: rgba(227, 139, 139, 0.12);
+  --ok: #2f8a56;
+  --warn: #a97a12;
+  --danger: #b43a3a;
+  --danger-soft: rgba(180, 58, 58, 0.1);
 
   /* Shape */
   --r-sm: 8px;
