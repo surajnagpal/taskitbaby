@@ -73,7 +73,7 @@ export function ToolPage() {
           </div>
 
           {seo && (
-            <section class="seo">
+            <section class="seo reveal">
               <div>
                 <h2>{seo.howToTitle}</h2>
                 <ol class="steps">
@@ -96,7 +96,7 @@ export function ToolPage() {
             </section>
           )}
 
-          <section class="related">
+          <section class="related reveal">
             <div class="section-title">More tools</div>
             <div class="related-links">
               {related.map((t) => {

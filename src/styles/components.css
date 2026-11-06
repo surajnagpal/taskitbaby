@@ -98,7 +98,37 @@
   font-size: clamp(42px, 5.4vw, 80px);
   font-weight: 650;
   letter-spacing: -0.045em;
-  line-height: 0.98;
+  line-height: 1;
+}
+
+/* Masked word reveal: each word rises out of its own clipping box. */
+.hero h1 .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.04em 0.06em 0.08em;
+  margin: -0.04em -0.06em -0.08em;
+}
+
+.hero h1 .w + .w {
+  margin-left: 0.18em;
+}
+
+.hero h1 .w > span {
+  display: inline-block;
+  animation: word-up 0.9s cubic-bezier(0.2, 0.75, 0.15, 1) both;
+  animation-delay: calc(0.08s + var(--j, 0) * 70ms);
+}
+
+@keyframes word-up {
+  from {
+    translate: 0 112%;
+    rotate: 2deg;
+  }
+  to {
+    translate: 0 0;
+    rotate: 0deg;
+  }
 }
 
 .hero p {
@@ -106,12 +136,21 @@
   font-size: clamp(16px, 1.2vw, 18px);
   line-height: 1.55;
   max-width: 52ch;
+  animation: rise 0.8s var(--ease) 0.18s both;
 }
 
 .search {
   width: min(560px, 100%);
   position: relative;
   margin-top: 10px;
+}
+
+.hero .search {
+  animation: rise 0.8s var(--ease) 0.3s both;
+}
+
+.brand {
+  animation: rise 0.6s var(--ease) both;
 }
 
 .search input {
@@ -157,6 +196,7 @@
   justify-content: center;
   gap: 6px;
   margin-bottom: 28px;
+  animation: rise 0.7s var(--ease) 0.42s both;
 }
 
 .chip {
@@ -217,6 +257,9 @@
     border-color var(--t-fast),
     box-shadow var(--t-fast),
     transform var(--t-fast);
+  /* staggered entrance: --i is the card's index */
+  animation: rise 0.65s var(--ease) both;
+  animation-delay: calc(0.5s + var(--i, 0) * 45ms);
 }
 
 .tool-card:hover {
@@ -334,6 +377,17 @@
   flex-direction: column;
   gap: 10px;
   margin-bottom: 28px;
+  animation: rise 0.6s var(--ease) both;
+}
+
+.tool-page .dropzone,
+.tool-page .workspace,
+.tool-page .result {
+  animation: rise 0.6s var(--ease) 0.1s both;
+}
+
+.tool-page .privacy {
+  animation: rise 0.6s var(--ease) 0.22s both;
 }
 
 .tool-head .back {

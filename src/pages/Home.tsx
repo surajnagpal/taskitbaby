@@ -15,10 +15,10 @@ export function Home() {
   return (
     <div class="container">
       <section class="hero">
-        <h1>
-          Every PDF tool.
+        <h1 aria-label="Every PDF tool. Zero uploads.">
+          <Words text="Every PDF tool." from={0} />
           <br />
-          Zero uploads.
+          <Words text="Zero uploads." from={3} />
         </h1>
         <p>Merge, split, compress, convert and edit PDFs in your browser. Files never leave your device.</p>
         <label class="search">
@@ -37,10 +37,10 @@ export function Home() {
 
         {visible.length ? (
           <div class="tool-grid">
-            {visible.map((t) => {
+            {visible.map((t, i) => {
               const Icon = t.icon;
               return (
-                <a key={t.id} href={`/${t.id}`} class={`tool-card ${t.soon ? 'soon' : ''}`} aria-disabled={t.soon}>
+                <a key={t.id} href={`/${t.id}`} class={`tool-card ${t.soon ? 'soon' : ''}`} aria-disabled={t.soon} style={{ '--i': i } as Record<string, number>}>
                   <div class="icon">
                     <Icon size={19} strokeWidth={1.75} />
                   </div>
@@ -57,7 +57,7 @@ export function Home() {
         )}
       </section>
 
-      <section class="why" id="privacy">
+      <section class="why reveal" id="privacy">
         <div class="why-item">
           <Lock size={18} strokeWidth={1.75} />
           <div>
@@ -81,6 +81,19 @@ export function Home() {
         </div>
       </section>
     </div>
+  );
+}
+
+/** Each word in its own clipping box so it can rise into view on load. */
+function Words({ text, from }: { text: string; from: number }) {
+  return (
+    <>
+      {text.split(' ').map((w, i) => (
+        <span class="w" aria-hidden="true" key={w + i}>
+          <span style={{ '--j': from + i } as Record<string, number>}>{w}</span>
+        </span>
+      ))}
+    </>
   );
 }
 
