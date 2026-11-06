@@ -2,6 +2,7 @@ import { useMemo, useState } from 'preact/hooks';
 import { Lock, Search, Zap, Gift } from 'lucide-preact';
 import { TOOLS } from '../tools';
 import { CATEGORIES } from '../tools/types';
+import { Crest } from '../components/Crest';
 
 export function Home() {
   const [q, setQ] = useState('');
@@ -12,22 +13,25 @@ export function Home() {
   return (
     <div class="container">
       <section class="hero">
+        <Crest />
+        <span class="eyebrow">Private by design · Free forever</span>
         <h1>
-          Every PDF tool you need, <span class="grad">right in your browser.</span>
+          Every PDF tool you need. <em>Nothing leaves your device.</em>
         </h1>
-        <p>Merge, split, compress, convert and edit PDFs in seconds. Your files are processed on your device and never leave it.</p>
+        <p>Merge, split, compress, convert and edit PDFs in seconds, entirely in your browser. No upload, no account, no limits.</p>
         <label class="search">
           <Search size={17} />
           <input type="search" placeholder="Search tools…" value={q} onInput={(e) => setQ((e.currentTarget as HTMLInputElement).value)} autoComplete="off" />
         </label>
+        <a href="#tools" class="scroll-cue" aria-label="Scroll to tools">
+          Scroll
+        </a>
       </section>
 
       <div id="tools" />
       {query ? (
         <section class="section">
-          <div class="section-title">
-            {filtered.length} result{filtered.length === 1 ? '' : 's'}
-          </div>
+          <SectionHead title={`${filtered.length} result${filtered.length === 1 ? '' : 's'}`} />
           {filtered.length ? <Grid tools={filtered} /> : <div class="empty">No tool matches “{q}”.</div>}
         </section>
       ) : (
@@ -35,32 +39,32 @@ export function Home() {
           const tools = TOOLS.filter((t) => t.category === c.id);
           if (!tools.length) return null;
           return (
-            <section class="section" key={c.id}>
-              <div class="section-title">{c.label}</div>
+            <section class="section reveal" key={c.id}>
+              <SectionHead title={c.label} count={tools.length} />
               <Grid tools={tools} />
             </section>
           );
         })
       )}
 
-      <section class="section" id="privacy" style={{ marginTop: 64 }}>
-        <div class="section-title">Why Taskitbaby</div>
+      <section class="section reveal why" id="privacy">
+        <SectionHead title="Why Taskitbaby" />
         <div class="tool-grid">
-          <div class="tool-card" style={{ transform: 'none' }}>
+          <div class="tool-card static">
             <div class="icon">
               <Lock size={18} />
             </div>
             <h3>Private by design</h3>
             <p>Everything runs inside your browser. Files are never uploaded, stored or seen by anyone.</p>
           </div>
-          <div class="tool-card" style={{ transform: 'none' }}>
+          <div class="tool-card static">
             <div class="icon">
               <Zap size={18} />
             </div>
             <h3>Instant</h3>
             <p>No upload or download queues. Most tasks finish in a second or two, even offline.</p>
           </div>
-          <div class="tool-card" style={{ transform: 'none' }}>
+          <div class="tool-card static">
             <div class="icon">
               <Gift size={18} />
             </div>
@@ -69,6 +73,16 @@ export function Home() {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function SectionHead({ title, count }: { title: string; count?: number }) {
+  return (
+    <div class="section-head">
+      <h2>{title}</h2>
+      {count != null && <span class="count">{count}</span>}
+      <span class="rule" />
     </div>
   );
 }

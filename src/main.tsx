@@ -1,5 +1,6 @@
 import { hydrate } from 'preact-iso';
 import '@fontsource-variable/inter';
+import '@fontsource-variable/cormorant';
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/components.css';
