@@ -1,7 +1,6 @@
 import type { ComponentChildren, ComponentType } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { LocationProvider as IsoLocationProvider, Router, Route, useLocation } from 'preact-iso';
-import { ShieldCheck } from 'lucide-preact';
 import { Home } from './pages/Home';
 import { ToolPage } from './pages/ToolPage';
 
@@ -13,15 +12,18 @@ function Header() {
     <header class="site-header">
       <div class="container">
         <a href="/" class="brand" aria-label="Taskitbaby home">
-          <span class="brand-mark">T</span>
+          <span class="brand-mark" aria-hidden="true" />
           <span class="brand-name">Taskitbaby</span>
         </a>
         <nav class="header-nav">
           <a href="/#tools" class="nav-link">
-            All tools
+            Tools
           </a>
           <a href="/#privacy" class="nav-link">
             Privacy
+          </a>
+          <a href="https://github.com/surajnagpal/taskitbaby" class="nav-link" target="_blank" rel="noopener">
+            GitHub
           </a>
         </nav>
       </div>
@@ -33,11 +35,7 @@ function Footer() {
   return (
     <footer class="site-footer">
       <div class="container">
-        <span class="row" style={{ gap: 6 }}>
-          <ShieldCheck size={14} />
-          Files are processed on your device and never uploaded.
-        </span>
-        <span>© {new Date().getFullYear()} Taskitbaby</span>
+        <span>© {new Date().getFullYear()} Taskitbaby · Files are processed on your device and never uploaded.</span>
         <span class="credit">Artwork: Raphael, The School of Athens (1509–1511), public domain.</span>
       </div>
     </footer>
@@ -46,11 +44,11 @@ function Footer() {
 
 function NotFound() {
   return (
-    <div class="container">
+    <div class="container tool-page">
       <div class="empty">
         <h2>Page not found</h2>
         <p style={{ marginTop: 8 }}>
-          <a href="/" style={{ color: 'var(--text)', textDecoration: 'underline' }}>
+          <a href="/" style={{ textDecoration: 'underline' }}>
             Back to all tools
           </a>
         </p>

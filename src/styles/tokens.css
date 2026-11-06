@@ -1,40 +1,45 @@
 :root {
   color-scheme: light;
 
-  /* Surfaces — warm off-white, like the fresco's stone */
-  --bg: #f7f5f0;
-  --bg-rgb: 247, 245, 240;
+  /* Surfaces — neutral, crisp */
+  --bg: #f7f7f8;
+  --bg-rgb: 247, 247, 248;
   --bg-elev: #ffffff;
-  --bg-elev-2: #fbfaf7;
-  --bg-hover: #f0ede6;
+  --bg-elev-2: #fafafa;
+  --bg-hover: #f0f0f2;
 
   /* Lines */
-  --line: rgba(20, 18, 14, 0.09);
-  --line-strong: rgba(20, 18, 14, 0.18);
+  --line: rgba(10, 10, 12, 0.08);
+  --line-strong: rgba(10, 10, 12, 0.16);
 
   /* Text */
-  --text: #161513;
-  --text-2: #5e5a52;
-  --text-3: #8c877d;
+  --text: #0e0e10;
+  --text-2: #5f5f66;
+  --text-3: #8e8e96;
 
-  /* Accent: warm gold lifted from the fresco's ochres (darkened for contrast on light) */
-  --accent: #b8882f;
-  --accent-2: #d8b25f;
-  --accent-soft: rgba(184, 136, 47, 0.12);
-  --accent-ring: rgba(184, 136, 47, 0.4);
-  --gradient: linear-gradient(135deg, #d8b25f, #b8882f);
+  /* Accent: ink. The artwork is the only thing on the page with colour. */
+  --accent: #0e0e10;
+  --accent-2: #3a3a40;
+  --accent-soft: rgba(14, 14, 16, 0.06);
+  --accent-ring: rgba(14, 14, 16, 0.22);
+  --gradient: linear-gradient(135deg, #1a1a1e, #0e0e10);
 
-  /* Status (only used for feedback) */
-  --ok: #2f8a56;
-  --warn: #a97a12;
-  --danger: #b43a3a;
-  --danger-soft: rgba(180, 58, 58, 0.1);
+  /* Status (feedback only) */
+  --ok: #1f8a4c;
+  --warn: #a4700f;
+  --danger: #c43c3c;
+  --danger-soft: rgba(196, 60, 60, 0.08);
 
   /* Shape */
   --r-sm: 8px;
   --r-md: 12px;
   --r-lg: 16px;
   --r-xl: 22px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(10, 10, 12, 0.04), 0 2px 8px rgba(10, 10, 12, 0.04);
+  --shadow-md: 0 2px 6px rgba(10, 10, 12, 0.05), 0 12px 32px rgba(10, 10, 12, 0.08);
+  --shadow-lg: 0 8px 24px rgba(10, 10, 12, 0.08), 0 32px 80px rgba(10, 10, 12, 0.12);
 
   /* Type */
   --font: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -45,7 +50,7 @@
   --t-fast: 140ms var(--ease);
   --t-med: 240ms var(--ease);
 
-  /* Fluid layout: content spans the whole viewport, gutters scale with it. */
-  --max-w: 100%;
-  --gutter: clamp(16px, 2.5vw, 56px);
+  /* Layout: content spans the viewport, gutters scale with it. */
+  --max-w: 1600px;
+  --gutter: clamp(16px, 3vw, 64px);
 }
