@@ -12,7 +12,7 @@ function Header() {
     <header class="site-header">
       <div class="container">
         <a href="/" class="brand" aria-label="Taskitbaby home">
-          <span class="brand-mark" aria-hidden="true" />
+          <img class="brand-logo" src="/logo.png" alt="" width="40" height="36" decoding="async" />
           <span class="brand-name">Taskitbaby</span>
         </a>
         <nav class="header-nav">
@@ -35,8 +35,8 @@ function Footer() {
   return (
     <footer class="site-footer">
       <div class="container">
-        <span>© {new Date().getFullYear()} Taskitbaby · Files are processed on your device and never uploaded.</span>
-        <span class="credit">Artwork: Raphael, The School of Athens (1509–1511), public domain.</span>
+        <span>© {new Date().getFullYear()} Taskitbaby</span>
+        <span>Files are processed on your device and never uploaded.</span>
       </div>
     </footer>
   );

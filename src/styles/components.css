@@ -30,35 +30,10 @@
   gap: 10px;
 }
 
-.brand-mark {
-  width: 22px;
-  height: 22px;
-  border-radius: 7px;
-  background: var(--text);
-  position: relative;
-}
-
-/* a tiny "T" cut out of the mark */
-.brand-mark::before {
-  content: '';
-  position: absolute;
-  left: 6px;
-  right: 6px;
-  top: 6px;
-  height: 2.5px;
-  border-radius: 2px;
-  background: #fff;
-}
-
-.brand-mark::after {
-  content: '';
-  position: absolute;
-  left: 9.75px;
-  width: 2.5px;
-  top: 6px;
-  bottom: 6px;
-  border-radius: 2px;
-  background: #fff;
+.brand-logo {
+  height: 36px;
+  width: auto;
+  display: block;
 }
 
 .brand-name {
@@ -112,33 +87,18 @@
   font-size: 12.5px;
 }
 
-/* ---------- Home: split hero ---------- */
+/* ---------- Home: hero ---------- */
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: clamp(32px, 5vw, 80px);
-  align-items: center;
-  padding: clamp(40px, 7vh, 88px) 0 clamp(40px, 6vh, 72px);
-}
-
-.hero-copy {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  max-width: 640px;
-}
-
-.eyebrow {
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-3);
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  padding: clamp(56px, 10vh, 120px) 0 clamp(36px, 5vh, 56px);
 }
 
 .hero h1 {
-  font-size: clamp(42px, 5.6vw, 84px);
+  font-size: clamp(42px, 5.4vw, 80px);
   font-weight: 650;
   letter-spacing: -0.045em;
   line-height: 0.98;
@@ -151,77 +111,10 @@
   max-width: 52ch;
 }
 
-.hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-3);
-  font-size: 13.5px;
-}
-
-.hero-meta a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-2);
-}
-
-.hero-meta a:hover {
-  color: var(--text);
-}
-
-.hero-meta .sep {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--line-strong);
-}
-
-.hero-figure {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.hero-figure img {
-  width: 100%;
-  aspect-ratio: 5 / 4;
-  object-fit: cover;
-  object-position: 50% 28%;
-  display: block;
-  border-radius: var(--r-xl);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-lg);
-  background: var(--bg-elev-2);
-}
-
-.hero-figure figcaption {
-  font-size: 12.5px;
-  color: var(--text-3);
-  text-align: right;
-}
-
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding-top: 40px;
-  }
-
-  .hero-figure img {
-    aspect-ratio: 16 / 10;
-  }
-
-  .hero-figure figcaption {
-    text-align: left;
-  }
-}
-
 .search {
-  width: min(520px, 100%);
+  width: min(560px, 100%);
   position: relative;
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 .search input {
@@ -261,25 +154,12 @@
   padding-top: 8px;
 }
 
-.tools-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 14px 24px;
-  margin-bottom: 18px;
-}
-
-.tools-head h2 {
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-}
-
 .chips {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 6px;
+  margin-bottom: 28px;
 }
 
 .chip {
@@ -372,7 +252,6 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
-  padding-right: 18px;
 }
 
 .tool-card h3 {
@@ -385,21 +264,6 @@
   font-size: 13.5px;
   color: var(--text-2);
   line-height: 1.45;
-}
-
-.tool-card .go {
-  position: absolute;
-  right: 14px;
-  top: 18px;
-  color: var(--text-3);
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity var(--t-fast), transform var(--t-fast);
-}
-
-.tool-card:hover .go {
-  opacity: 1;
-  transform: none;
 }
 
 .tool-card.soon {

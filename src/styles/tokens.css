@@ -50,7 +50,7 @@
   --t-fast: 140ms var(--ease);
   --t-med: 240ms var(--ease);
 
-  /* Layout: content spans the viewport, gutters scale with it. */
-  --max-w: 1600px;
+  /* Layout: content spans the whole viewport, gutters scale with it. */
+  --max-w: 100%;
   --gutter: clamp(16px, 3vw, 64px);
 }
