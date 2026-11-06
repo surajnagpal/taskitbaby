@@ -164,8 +164,7 @@ p {
 }
 
 ::selection {
-  background: var(--text);
-  color: #fff;
+  background: rgba(14, 14, 16, 0.14);
 }
 
 /* ---------- Reveal on scroll ----------
