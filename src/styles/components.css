@@ -53,6 +53,7 @@
   color: var(--text-2);
   font-size: 14px;
   padding: 7px 12px;
+  white-space: nowrap;
   border-radius: var(--r-sm);
   transition: color var(--t-fast), background var(--t-fast);
 }
@@ -182,7 +183,7 @@
 
 .tool-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 12px;
 }
 
@@ -426,13 +427,13 @@
 /* workspace: content + sidebar */
 .workspace {
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: minmax(0, 1fr) clamp(300px, 22vw, 380px);
   gap: 20px;
   align-items: start;
 }
 
 .page-grid {
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(140px, 10vw, 190px), 1fr));
 }
 
 @media (max-width: 860px) {
