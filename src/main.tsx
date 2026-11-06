@@ -1,0 +1,8 @@
+import { render } from 'preact';
+import '@fontsource-variable/inter';
+import './styles/tokens.css';
+import './styles/base.css';
+import './styles/components.css';
+import { App } from './app';
+
+render(<App />, document.getElementById('app')!);
